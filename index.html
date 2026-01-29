@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charlotte D'Hauterives — Thérapeute par correspondance</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="audioPermissionModal" class="modal">
+        <div class="modal-content">
+            <h3>Bienvenue</h3>
+            <p>Souhaitez-vous écouter une musique d'ambiance pendant votre visite ?</p>
+            <div class="modal-buttons">
+                <button id="allowAudio">Oui, avec plaisir</button>
+                <button id="declineAudio">Non merci</button>
+            </div>
+        </div>
+    </div>
+    
+    <audio id="backgroundMusic" loop>
+        <source src="CANON.mp3" type="audio/mpeg">
+    </audio>
+    
+    <div class="music-widget">
+        <button id="playPauseBtn">⏸️</button>
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
+        <span class="volume-icon">🔊</span>
+    </div>
+    
+    <main>
+        <section class="hero">
+            <div class="container">
+                <img src="ICON.png" alt="Charlotte D'Hauterives" class="hero-image">
+                <h1>Charlotte D'Hauterives</h1>
+                <p class="subtitle">Thérapeute par correspondance</p>
+                <h2>Un chemin intérieur singulier, une voix qui accompagne et une trace qui reste.</h2>
+                <p class="intro">Bienvenue dans cet espace de thérapie par correspondance, pensé pour celles et ceux qui souhaitent transformer l'expérience thérapeutique en un processus personnalisé, mémorable et profondément humain.</p>
+                <div class="ornamental-divider">❦ ❦ ❦</div>
+            </div>
+        </section>
+
+        <section class="approach">
+            <div class="container">
+                <p class="description">Dans une relation où le temps, l'écriture et l'écoute se font alliés, Charlotte D'Hauterives vous accompagne à travers des échanges écrits structurés, réfléchis et bienveillants. Cette approche unique permet de :</p>
+                
+                <div class="benefits">
+                    <div class="benefit">
+                        <div class="icon">✨</div>
+                        <h3>Donner forme à votre travail intérieur</h3>
+                        <p>Chaque message devient une trace précieuse de votre cheminement, une chronique de vos évolutions, prises de conscience et transformations.</p>
+                    </div>
+
+                    <div class="benefit">
+                        <div class="icon">🌱</div>
+                        <h3>Un accompagnement sur mesure</h3>
+                        <p><em>Pas à pas, selon votre rythme</em></p>
+                        <p>Charlotte adapte ses retours à votre monde singulier — vos mots, vos impressions, vos découvertes. Chaque réponse est une invitation à creuser ce qui compte vraiment pour vous.</p>
+                    </div>
+
+                    <div class="benefit">
+                        <div class="icon">📩</div>
+                        <h3>Une relation thérapeutique réinventée</h3>
+                        <p>Loin des contraintes du face-à-face, cet accompagnement par écrit :</p>
+                        <ul>
+                            <li>favorise l'introspection profonde,</li>
+                            <li>offre un espace sécurisé et libre,</li>
+                            <li>s'intègre à votre quotidien à votre façon.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="for-whom">
+            <div class="container">
+                <div class="divider">❦ ❦ ❦</div>
+                <h3>Pour qui ?</h3>
+                <p>Pour celles et ceux qui souhaitent penser, ressentir et explorer à travers l'écriture, tout en restant accompagné·e·s par une présence douce, lucide et professionnelle.</p>
+            </div>
+        </section>
+
+        <section class="contact">
+            <div class="container">
+                <h3>Commencer votre accompagnement</h3>
+                <p>Prêt·e à entamer ce voyage intérieur par l'écriture ?</p>
+                <button class="cta-button">Prendre contact</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Charlotte D'Hauterives — Thérapeute par correspondance</p>
+            <p>7 rue des coteaux, 14760 Bretteville-sur-Odon</p>
+        </div>
+    </footer>
+    
+    <script>
+        const audio = document.getElementById('backgroundMusic');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const modal = document.getElementById('audioPermissionModal');
+        const allowBtn = document.getElementById('allowAudio');
+        const declineBtn = document.getElementById('declineAudio');
+        
+        audio.volume = 0.5;
+        
+        // Gestion du modal de permission
+        allowBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+            audio.play();
+            playPauseBtn.textContent = '⏸️';
+        });
+        
+        declineBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+            playPauseBtn.textContent = '▶️';
+        });
+        
+        // Contrôles audio
+        playPauseBtn.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.textContent = '⏸️';
+            } else {
+                audio.pause();
+                playPauseBtn.textContent = '▶️';
+            }
+        });
+        
+        volumeSlider.addEventListener('input', function() {
+            audio.volume = volumeSlider.value;
+        });
+    </script>
+</body>
+</html>
